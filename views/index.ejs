@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  </head>
+  <body>
+      <input type="number" name="number" id="number" style="margin-bottom: 10px;">
+      <br>
+      <button id="segitiga">Generate Segitiga</button>
+      <button id="ganjil">Generate Bilangan Ganjil</button>
+      <button id="prima">Generate Bilangan prima</button>
+      <br>
+      <h4>Result</h4>
+      <span id="result"></span>
+  </body>
+</html>
+
+<script>
+  $("#segitiga").click(function(){
+    var number = $("#number").val();
+
+    for (let i=1; i<=number; i++)
+    {
+      let eachLine = ''
+
+      for (let j=1; j<=i; j++)
+      {
+        eachLine += j + " "
+      }
+      eachLine = eachLine.trim();
+      $("#result").html(eachLine);
+    }
+  });
+
+  $("#ganjil").click(function(){
+    var number = $("#number").val();
+    if(number%2 == 0)
+    {
+      $("#result").html(number+ " adalah bilangan genap");
+    }else{
+      $("#result").html(number+ " adalah bilangan ganjil");
+    }
+  });
+
+  function angkaPrima(num) {
+    var flag = true
+    for (var i = num-1; i>1; i--)
+    {
+      if (num%i === 0) {
+        flag = false;
+      }
+    }
+    return flag
+  }
+
+  $("#prima").click(function(){
+    var number = $("#number").val();
+    var prima = angkaPrima(number)
+    if(prima == false)
+    {
+      $("#result").html(number+ " bukan bilangan prima");
+    }else
+    {
+      $("#result").html(number+ " merupakan bilangan prima");
+    }
+  });
+
+</script>
